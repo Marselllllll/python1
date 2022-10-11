@@ -29,7 +29,10 @@ def new_name():
     nomer = input('Введите номер: ')
     g = norm_nomer(nomer)
     v = norm_name(name)
-    kniga[v] = g
+    if g ==  'Неправильно набран номер':
+        print('Неправильно набран номер')
+    else:
+        kniga[v] = g
 def renew_name():
     name = input('Введите старое имя: ')
     namee = norm_name(name)
@@ -41,7 +44,10 @@ def renew_nomer():
     namee = norm_name(name)
     new_nomer = input('Введите новый номер: ')
     new_nomerr = norm_nomer(new_nomer)
-    kniga[namee] = new_nomerr
+    if new_nomerr == 'Неправильно набран номер':
+        print('Неправильно набран номер')
+    else:
+        kniga[namee] = new_nomerr
 
 kniga = {}
 

@@ -2,8 +2,7 @@ import tkinter as tk
 kniga ={}
 listfio = []
 listnum =[]
-textfio = ''
-textnum = ''
+
 def norm_number(number):
     number = number.replace(' ','').replace('-','')
     if number[:2] == '+7' and len(number) == 12:
@@ -19,7 +18,7 @@ def norm_number(number):
 
 def norm_fio(fio):
     fio = fio.title()
-    return fio
+    return fio+" "
 
 def f_create():
     def f_create_number():
@@ -161,7 +160,9 @@ def f_search():
         if textnum1!= None:
 
             def f_renew_number1():
+                del kniga[s_name]
                 a = f_create()
+
 
 
             war_window1 = tk.Tk()
@@ -416,6 +417,7 @@ def f_search():
 def f_arhiv():
     def f_war_number():
         def f_renew_number():
+            del kniga[textfio]
             a = f_create()
 
         war_window = tk.Tk()
