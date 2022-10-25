@@ -27,6 +27,6 @@ def monty_hall(iter):
                 n1 = n1 + 1
             else:
                 n2 = n2 + 1
-    s2 = n1 // ((n1 + n2) // 100)
+    s2 = n1 / ((n1 + n2) / 100)
 
     return s2

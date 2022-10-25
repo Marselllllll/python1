@@ -1,5 +1,5 @@
-import Geometry.birthDAY as br
-import Geometry.parMontiHola as pMH
+from Geometry import birthDAY as br
+from Geometry import parMontiHola as pmh
 
-print(pMH.monty_hall(10000))
-print(br.birthday(1000))
+print(pmh.monty_hall(10000))
+print(br.birthday(1000, 60))
