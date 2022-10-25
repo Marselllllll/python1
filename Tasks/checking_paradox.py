@@ -1,5 +1,4 @@
-import DR as dr
-import pMontiHolla as pMH
+import paradox
 
-print(pMH.monty_hall(10000))
-print(dr.birthday(1000))
+print(paradox.monty_hall(10000))
+print(paradox.birthday(1000))
