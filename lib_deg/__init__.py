@@ -1,0 +1,1 @@
+from .function_for_deg import *
