@@ -1,4 +1,4 @@
-from PackForMiracle1 import *
+from PackForMiracle import *
 while True:
     print('\033[4m\033[32mПоле чудес\033[0m')
     main = int(input('1 - Играть\n2 - Рекорды\n3 - Настройки\n4 - Выход\nВыбор: '))
