@@ -1,2 +1,2 @@
-from PackForMiracle1 import Inter
+from PackForMiracle import Inter
 Inter()

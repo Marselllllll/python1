@@ -28,7 +28,7 @@ def game(word, lvl):
         return 1
 
 def record(rec, lvl):
-    with open(r'C:\Users\Student\PycharmProjects\python3\PackForMiracle\Record.txt', encoding='cp1251', mode="w+") as text:
+    with open('Record.txt', encoding='cp1251', mode="w+") as text:
         zn = f"Рекорд: {rec}; Сложность: {lvl} "
         text.write(zn)
 

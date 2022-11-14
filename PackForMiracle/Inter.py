@@ -17,11 +17,11 @@ while True:
             while ex2 != 1 and ex2 != 3:
                 gr = int(input('Выбор тематики слов:\n1 - Природа\n2 - Техносфера\n3 - Имена\nВыбор: '))
                 if gr == 1:
-                    word = word_in_file(r'C:\Users\Student\PycharmProjects\python3\PackForMiracle\Nature.txt', 2)
+                    word = word_in_file('Nature.txt', 2)
                 elif gr == 2:
-                    word = word_in_file(r'C:\Users\Student\PycharmProjects\python3\PackForMiracle\Tech.txt', 2)
+                    word = word_in_file('Tech.txt', 2)
                 else:
-                    word = word_in_file(r'C:\Users\Student\PycharmProjects\python3\PackForMiracle\Name.txt', 2)
+                    word = word_in_file('Name.txt', 2)
                 if lvl == 0:
                     lvl = int(input('Выбор уровня сложности:\n1 - 7 жизней\n2 - 5 жизней\n3 - 3 жизни\nВыбор: '))
                 ex2 = int(input('1 - Играть\n2 - Выбрать заново\n3 - Выход в меню\nВыбор: '))
@@ -39,7 +39,7 @@ while True:
             record(rec, lvl)
     if main == 2:
         print('Ваши рекорды')
-        with open(r'C:\Users\Student\PycharmProjects\python3\PackForMiracle\Record.txt', mode="r", encoding='cp1251') as re:
+        with open('Record.txt', mode="r", encoding='cp1251') as re:
             print(re.read())
     if main == 3:
         aa = 0
@@ -48,27 +48,27 @@ while True:
             if aa == 1:
                 bb = int(input('Выбор тематики слов:\n1 - Природа\n2 - Техносфера\n3 - Имена\nВыбор: '))
                 if bb == 1:
-                   print(word_in_file(r'C:\Users\Student\PycharmProjects\python3\PackForMiracle\Nature.txt', 1))
+                   print(word_in_file('Nature.txt', 1))
                 elif bb == 2:
-                    print(word_in_file(r'C:\Users\Student\PycharmProjects\python3\PackForMiracle\Tech.txt', 1))
+                    print(word_in_file('Tech.txt', 1))
                 else:
-                    print(word_in_file(r'C:\Users\Student\PycharmProjects\python3\PackForMiracle\Name.txt', 1))
+                    print(word_in_file('Name.txt', 1))
             if aa == 2:
                 bb = int(input('Выбор тематики слов:\n1 - Природа\n2 - Техносфера\n3 - Имена\nВыбор: '))
                 if bb == 1:
-                    llst = word_in_file(r'C:\Users\Student\PycharmProjects\python3\PackForMiracle\Nature.txt', 3)
+                    llst = word_in_file(r'Nature.txt', 3)
                     lllst = nka(llst)
-                    with open(r'C:\Users\Student\PycharmProjects\python3\PackForMiracle\Nature.txt', encoding='cp1251', mode='w') as text:
+                    with open('Nature.txt', encoding='cp1251', mode='w') as text:
                         text.writelines(lllst)
                 elif bb == 2:
-                    llst = word_in_file(r'C:\Users\Student\PycharmProjects\python3\PackForMiracle\Tech.txt', 3)
+                    llst = word_in_file(r'Tech.txt', 3)
                     lllst = nka(llst)
-                    with open(r'C:\Users\Student\PycharmProjects\python3\PackForMiracle\Tech.txt', encoding='cp1251', mode='w') as text:
+                    with open('Tech.txt', encoding='cp1251', mode='w') as text:
                         text.writelines(lllst)
                 else:
-                    llst = word_in_file(r'C:\Users\Student\PycharmProjects\python3\PackForMiracle\Name.txt', 3)
+                    llst = word_in_file(r'Name.txt', 3)
                     lllst = nka(llst)
-                    with open(r'C:\Users\Student\PycharmProjects\python3\PackForMiracle\Name.txt', encoding='cp1251', mode='w') as text:
+                    with open('Name.txt', encoding='cp1251', mode='w') as text:
                         text.writelines(lllst)
     if main == 4:
         break
