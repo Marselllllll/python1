@@ -29,7 +29,7 @@ def read_file(name):
 
 def save_file(name, lst):
     with open(name, mode='w', encoding='Windows-1251') as text:
-        a = [f'Количество уникальных слов: {len(lst)}\n', '========================\n']
+        a = [f'Количество уникальных слов: {len(lst)}\n', '================================']
         text.writelines(a)
         text.writelines(lst)
 
