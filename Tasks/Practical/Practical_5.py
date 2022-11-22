@@ -1,4 +1,3 @@
-from io import TextIOWrapper
 from tkinter import Tk
 from tkinter.filedialog import askopenfilename
 import os
