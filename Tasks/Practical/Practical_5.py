@@ -37,22 +37,23 @@ if extension_list.lower().endswith('.txt') == True:
                 value_line_check = int(value_line)
             except ValueError:
                 value_line_list = list(value_line)
+                check_end = 1
                 for j in value_line_list:
                     j = j.lower()
                     if j == ' ':
-                        check_end = 1
+                        # check_end = 1
                         print(f'\033[31m\033[1mОшибка форматирования.\033[0m\nВ строке под номером {line} есть символ \033[31m\033[1m"Пробел".\033[0m')
                         break
                     elif alfavit.russian.count(j) != 0:
-                        check_end = 1
+                        # check_end = 1
                         print(f'\033[31m\033[1mОшибка форматирования.\033[0m\nВ строке под номером {line} есть символ \033[31m\033[1mРусского алфавита.\033[0m')
                         break
                     elif alfavit.english.count(j) != 0:
-                        check_end = 1
+                        # check_end = 1
                         print(f'\033[31m\033[1mОшибка форматирования.\033[0m\nВ строке под номером {line} есть символ \033[31m\033[1mАнглийского алфавита.\033[0m')
                         break
                     else:
-                        check_end = 1
+                        # check_end = 1
                         print(f'\033[31m\033[1mОшибка форматирования.\033[0m\nВ строке под номером {line} есть \033[31m\033[1mНебуквенный символ.\033[0m')
                         break
 
