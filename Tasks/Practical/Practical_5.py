@@ -19,9 +19,10 @@ if extension_list.lower().endswith('.txt') == True:
     # Считывание файла
     try:
         text = open(extension_list, mode='r', encoding='UTF-8')
-        check_count_line = text.readline(2)
+        check_count_lines = text.readlines()
+        line2 = check_count_lines[1]
     except:
-        print('\033[31m[1mОшибка форматирования.\033[0m\nВ файле менее \033[31m[1m2\033[0m-х строк.')
+        print('\033[31m\033[1mОшибка форматирования.\033[0m\nВ файле менее \033[31m\033[1m2-х строк.\033[0m')
     else:
         text.seek(0)
         all_line_list = text.readlines()
