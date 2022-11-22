@@ -1,14 +1,68 @@
-def read(name):
-    try:
-        text = []
-        text = open(name, mode='r')
-    except:
-        print('Ошибка')
-    else:
-        lst = text.readlines()
-        print(lst)
-    finally:
-        if type(text) == '_io.TextIOWrapper':
-            print(type(text))
+from tkinter import Tk
+from tkinter.filedialog import askopenfilename
+import os
+from library import alfavit
 
-read(r'C:\Users\Student\PycharmProjects\python3\Tasks\Practical\num')
+# Выбор файла из окна
+Tk().withdraw()
+filename = askopenfilename()
+
+# Кортеж пути
+os.path.splitext(filename)
+
+# Строка пути
+extension_tuple = os.path.splitext(filename)
+extension_list = ''.join(extension_tuple)
+
+# Проверка расширения
+if extension_list.lower().endswith('.txt') == True:
+    # Считывание файла
+    try:
+        text = open(extension_list, mode='r', encoding='UTF-8')
+        check_count_line = text.readline(2)
+    except:
+        print('\033[31m[1mОшибка форматирования.\033[0m\nВ файле менее \033[31m[1m2\033[0m-х строк.')
+    else:
+        text.seek(0)
+        all_line_list = text.readlines()
+        line = 0
+        finish_list = []
+        check_end = 0
+        for i in all_line_list:
+            line += 1
+            value_line = i.replace('\n', '')
+            value_line = value_line.strip()
+            try:
+                value_line_check = int(value_line)
+            except ValueError:
+                value_line_list = list(value_line)
+                for j in value_line_list:
+                    j = j.lower()
+                    if j == ' ':
+                        check_end = 1
+                        print(f'\033[31m\033[1mОшибка форматирования.\033[0m\nВ строке под номером {line} есть символ \033[31m\033[1m"Пробел".\033[0m')
+                        break
+                    elif alfavit.russian.count(j) != 0:
+                        check_end = 1
+                        print(f'\033[31m\033[1mОшибка форматирования.\033[0m\nВ строке под номером {line} есть символ \033[31m\033[1mРусского алфавита.\033[0m')
+                        break
+                    elif alfavit.english.count(j) != 0:
+                        check_end = 1
+                        print(f'\033[31m\033[1mОшибка форматирования.\033[0m\nВ строке под номером {line} есть символ \033[31m\033[1mАнглийского алфавита.\033[0m')
+                        break
+                    else:
+                        check_end = 1
+                        print(f'\033[31m\033[1mОшибка форматирования.\033[0m\nВ строке под номером {line} есть \033[31m\033[1mНебуквенный символ.\033[0m')
+                        break
+
+            else:
+                finish_list.append(value_line_check)
+        finish_count = finish_list.pop(0)
+        if check_end == 0:
+            if finish_count != len(finish_list):
+                print('\033[31m\033[1mОшибка форматирования.\033[0m\nВ строке под номером 1 указано \033[31m\033[1mНеверное количество элементов.\033[0m')
+            else:
+                print(finish_list)
+    finally:
+        text.close()
+
