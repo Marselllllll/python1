@@ -1,6 +1,9 @@
+from io import TextIOWrapper
 from tkinter import Tk
 from tkinter.filedialog import askopenfilename
 import os
+from typing import TextIO
+
 from library import alfavit
 
 # Выбор файла из окна
@@ -11,36 +14,35 @@ filename = askopenfilename()
 os.path.splitext(filename)
 
 # Строка пути
-extension_tuple = os.path.splitext(filename)
-extension_list = ''.join(extension_tuple)
+extension_tuple: tuple = os.path.splitext(filename)
+extension_string: str = ''.join(extension_tuple)
 
-text = []
 # Проверка расширения
-if extension_list.lower().endswith('.txt'):
+if extension_string.lower().endswith('.txt'):
     # Считывание файла
     try:
-        text = open(extension_list, mode='r')
-        check_count_lines = text.readlines()
-        line2 = check_count_lines[1]
+        text: TextIO = open(extension_string, mode='r')
+        check_count_lines: list = text.readlines()
+        line2: str = check_count_lines[1]
     except IndexError:
         print('\033[31m\033[1mОшибка форматирования.\033[0m\nВ файле менее \033[31m\033[1m2-х строк.\033[0m')
     else:
         text.seek(0)
-        all_line_list = text.readlines()
-        line = 0
-        finish_list = []
-        check_end = 0
+        all_line_list: list = text.readlines()
+        line: int = 0
+        finish_list: list = []
+        check_end: int = 0
         for i in all_line_list:
             line += 1
-            value_line = i.replace('\n', '')
+            value_line: str = i.replace('\n', '')
             value_line = value_line.strip()
             try:
-                value_line_check = int(value_line)
+                value_line_check: int = int(value_line)
             except ValueError:
-                value_line_list = list(value_line)
+                value_line_list: list = list(value_line)
                 check_end = 1
                 for j in value_line_list:
-                    j = j.lower()
+                    j: str = j.lower()
                     if j == ' ':
                         print(f'\033[31m\033[1mОшибка форматирования.\033[0m\n'
                               f'В строке под номером {line} есть символ \033[31m\033[1m"Пробел".\033[0m')
@@ -60,7 +62,7 @@ if extension_list.lower().endswith('.txt'):
 
             else:
                 finish_list.append(value_line_check)
-        finish_count = finish_list.pop(0)
+        finish_count: int = finish_list.pop(0)
         if check_end == 0:
             if finish_count != len(finish_list):
                 print('\033[31m\033[1mОшибка форматирования.\033[0m\n'
