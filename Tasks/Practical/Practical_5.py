@@ -1,6 +1,5 @@
 from tkinter import Tk
 from tkinter.filedialog import askopenfilename
-import os
 from typing import TextIO
 
 from library import alfavit
@@ -9,18 +8,19 @@ from library import alfavit
 Tk().withdraw()
 filename = askopenfilename()
 
-# Кортеж пути
-os.path.splitext(filename)
+# Кортеж пути: "даём путь" -> ("путь с именем файла", "разрешение файла")
+# os.path.splitext(filename)
 
-# Строка пути
-extension_tuple: tuple = os.path.splitext(filename)
-extension_string: str = ''.join(extension_tuple)
+# Строка пути (Не нужно, поскольку askopenfilename() дает путь с разрешением файла)
+# import os
+# extension_tuple: tuple = os.path.splitext(filename)
+# extension_string: str = ''.join(extension_tuple)
 
 # Проверка расширения
-if extension_string.lower().endswith('.txt'):
+if filename.lower().endswith('.txt'):
     # Считывание файла
     try:
-        text: TextIO = open(extension_string, mode='r')
+        text: TextIO = open(filename, mode='r')
         check_count_lines: list = text.readlines()
         line2: str = check_count_lines[1]
     except IndexError:
@@ -70,3 +70,10 @@ if extension_string.lower().endswith('.txt'):
                 print(finish_list)
     finally:
         text.close()
+else:
+    print(filename)
+    slesh: int = filename.rindex('/') + 1
+    point: int = filename.rindex('.')
+    print('\033[31m\033[1mОшибка разрешения файла (Not .txt).\033[0m\n'
+          f'Файл под именем \033[31m\033[1m"{filename[slesh:point]}"\033[0m'
+          f' имеет разрешение \033[31m\033[1m"{filename[point:]}"\033[0m.')
