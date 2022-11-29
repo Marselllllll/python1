@@ -1,39 +1,46 @@
-def read_file(name):
-    text = open(name, mode='r')
-    stroka1 = text.read()
+from typing import TextIO
+
+
+def read_file(name: str) -> list:
+    """
+    :param name: Параметр (type: str), подающий на вход путь к файлу для последующего чтения.
+    :return: Значение (type: list), возвращаемое функцией в виде списка всех слов из прочитанного файла.
+    """
+    text: TextIO = open(name, mode='r')
+    stroka0: str = text.read()
     text.close()
-    stroka = stroka1.replace('\n', ' ')
-    i = 0
-    s = ''
-    while i != len(stroka):
-        if ord(stroka[i]) >= 1040 and ord(stroka[i]) <= 1103 or ord(stroka[i]) == 1025 or ord(stroka[i]) == 1105:
-            s += stroka[i].lower()
-        elif stroka[i] == ' ' or stroka[i] == '-' or stroka[i] == '_':
-            if stroka[i+1] != ' ':
-                s += stroka[i]
+    stroka1: str = stroka0.replace('\n', ' ')
+    i: int = 0
+    strokaend: str = ''
+    while i != len(stroka1):
+        if 1040 <= ord(stroka1[i]) <= 1103 or ord(stroka1[i]) == 1025 or ord(stroka1[i]) == 1105:
+            strokaend += stroka1[i].lower()
+        elif stroka1[i] == ' ' or stroka1[i] == '-' or stroka1[i] == '_':
+            if stroka1[i+1] != ' ':
+                strokaend += stroka1[i]
         i += 1
-    lst = s.split(sep=' ')
+    lst0: list = strokaend.split(sep=' ')
     i = 0
-    lst1 = []
-    while i != len(lst):
-        if lst1.count(lst[i] + '\n') == 0:
-            lst1.append(lst[i] + '\n')
+    lstend: list = []
+    while i != len(lst0):
+        if lstend.count(lst0[i] + '\n') == 0:
+            lstend.append(lst0[i] + '\n')
         i += 1
-    lst1.sort()
-    m = lst1[len(lst1)-1]
-    lst1.pop(len(lst1)-1)
-    n = m.replace('\n', '')
-    lst1.append(n)
-    return lst1
+    lstend.sort()
+    end_str0: str = lstend[len(lstend)-1]
+    lstend.pop(len(lstend)-1)
+    end_strend: str = end_str0.replace('\n', '')
+    lstend.append(end_strend)
+    return lstend
 
 
-def save_file(name, lst):
+def save_file(name: str, lst: list) -> None:
     with open(name, mode='w', encoding='Windows-1251') as text:
-        a = [f'Количество уникальных слов: {len(lst)}\n', '================================']
-        text.writelines(a)
+        beginning: list = [f'Количество уникальных слов: {len(lst)}\n', '================================']
+        text.writelines(beginning)
         text.writelines(lst)
 
 
-a = read_file('data.txt')
-b = input('Придумайте имя файля для сохранения уникальных слов из файла data.txt: ')
-save_file(b, a)
+file: list = read_file('data.txt')
+name: str = input('Придумайте имя файля для сохранения уникальных слов из файла data.txt: ')
+save_file(name, file)

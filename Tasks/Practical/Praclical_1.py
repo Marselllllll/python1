@@ -32,3 +32,6 @@ def monty_hall(iter: int) -> int:
     s2: int = n1 // ((n1 + n2) // 100)
 
     return s2
+
+
+print(monty_hall(100000))

@@ -8,8 +8,8 @@ from library import alfavit
 Tk().withdraw()
 filename = askopenfilename()
 
+# Метод os.path.splitext(filename) даёт нам
 # Кортеж пути: "даём путь" -> ("путь с именем файла", "разрешение файла")
-# os.path.splitext(filename)
 
 # Строка пути (Не нужно, поскольку askopenfilename() дает путь с разрешением файла)
 # import os
